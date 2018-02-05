@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenuBar>
@@ -27,6 +28,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
+    QGridLayout *gridLayout;
     WebPage *webPage;
     QMenuBar *menuBar;
     QToolBar *mainToolBar;
@@ -39,9 +41,15 @@ public:
         MainWindow->resize(400, 300);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
+        gridLayout = new QGridLayout(centralWidget);
+        gridLayout->setSpacing(6);
+        gridLayout->setContentsMargins(11, 11, 11, 11);
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         webPage = new WebPage(centralWidget);
         webPage->setObjectName(QStringLiteral("webPage"));
-        webPage->setGeometry(QRect(50, 60, 301, 141));
+
+        gridLayout->addWidget(webPage, 0, 0, 1, 1);
+
         MainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(MainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
