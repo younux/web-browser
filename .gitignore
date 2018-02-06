@@ -1,4 +1,6 @@
 *Makefile
+*Makefile.*
 *.o
+*.obj
 *.DS_Store
 *.qmake.stash
